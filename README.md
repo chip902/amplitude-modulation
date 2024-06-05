@@ -50,3 +50,32 @@ Replace API_KEY_1, SECRET_KEY_1, etc., with your actual Amplitude API keys and s
 ## License
 
 This project is licensed under the MIT License.
+
+## Troubleshooting
+
+### Self-Signed Certificates
+
+If you encounter issues connecting using a self-signed certificate on a protected network, you can either bypass SSL verification (not recommended for production) or provide the path to your self-signed certificate.
+
+#### Bypassing SSL Verification
+
+**Note:** This method is not recommended for production environments due to security risks.
+
+Update the `requests.get` call in the `get_amplitude_events` function to disable SSL verification:
+
+```python
+response = requests.get(base_url, headers=headers, params=params, verify=False)
+```
+
+#### Using a Self-Signed Certificate
+
+1.	Ensure the self-signed certificate is saved on your file system, e.g., path/to/self-signed-cert.pem.
+2.	Update the requests.get call in the get_amplitude_events function to provide the path to the certificate:
+
+```python
+cert_path = 'path/to/self-signed-cert.pem'
+response = requests.get(base_url, headers=headers, params=params, verify=cert_path)
+```
+
+This will allow the script to connect using the self-signed certificate.
+
