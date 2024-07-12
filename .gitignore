@@ -1,3 +1,5 @@
 venv/
 *.key
 *.json
+*.xlsx
+.DS_Store
