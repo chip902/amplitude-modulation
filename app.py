@@ -81,9 +81,9 @@ def main():
             events_list = [json.loads(line)
                            for line in events.strip().split('\n')]
             df = pd.DataFrame(events_list)
-            df.to_excel(f'events_project_{index + 1}.xlsx', index=False)
+            df.to_excel(f'events_project_{project_name}.xlsx', index=False)
             print(f"Exported events for project {
-                  index + 1} to events_project_{index + 1}.xlsx")
+                  index + 1} to events_{project_name}.xlsx")
         else:
             print(f"No active events found for project {index + 1}")
 
